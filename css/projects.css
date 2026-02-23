@@ -1,0 +1,186 @@
+.project-layout {
+    display: block;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.work-main {
+    flex: 3; /* Takes 3 parts of the space */
+}
+
+.work-sidebar {
+    flex: 1; /* Takes 1 part of the space */
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Mini Slider Styling */
+.mini-slider-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding-bottom: 0 !important;
+}
+
+.slider-container {
+    position: relative;
+    height: 250px;
+    background: #eee;
+}
+
+.slider-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.slider-container img.active {
+    display: block;
+}
+
+.mini-slider-card h3 {
+    padding: 15px;
+    color: var(--brand-navy);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* --- Project Tab Container --- */
+.project-tabs {
+    display: flex !important;      /* Force flexbox */
+    flex-direction: row !important; /* Force horizontal alignment */
+    justify-content: center;
+    align-items: center;            /* Centers them vertically within the row */
+    gap: 15px;
+    margin-bottom: 40px;
+    width: 100%;                   /* Ensure container spans the page */
+    height: auto !important;       /* Prevent inherited tall heights */
+}
+
+/* --- Individual Tab Buttons --- */
+.tab-btn {
+    display: inline-block;
+    width: auto !important;        /* Prevent them from spanning full width */
+    height: auto !important;       /* Prevent them from being tall */
+    padding: 10px 20px;
+    line-height: 1.2;              /* Fixes internal text height */
+
+    /* Previous styles... */
+    border: 2px solid var(--brand-navy);
+    background: transparent;
+    color: var(--brand-navy);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* --- Hover Effect --- */
+.tab-btn:hover {
+    background-color: #f0f4f8; /* Light blue tint */
+}
+
+/* --- Active State (The one currently selected) --- */
+.tab-btn.active {
+    background-color: var(--brand-navy);
+    color: white;
+    border-color: var(--brand-navy);
+}
+
+/* Optional: Adding the Gold accent to the active tab */
+.tab-btn.active {
+    background-color: var(--brand-navy);
+    color: white;
+    box-shadow: 0 4px 0 var(--brand-gold); /* Thin gold bottom accent */
+}
+
+/* Manual Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.next { right: 0; }
+.prev { left: 0; }
+
+.mini-slider-card .slider-container img {
+    display: block !important;
+}
+
+@media (max-width: 768px) {
+    /* 1. Reset Containers */
+    .project-layout, .work-main, .gallery-container, #gallery-wrapper {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* 2. Working Tabs */
+    .project-tabs {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding: 10px 20px;
+        scrollbar-width: none;
+    }
+    .project-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn { flex: 0 0 auto !important; }
+
+    #gallery-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 20px 30px;
+    }
+
+    /* Target the class directly */
+    .mini-slider-card {
+        flex: 0 0 85% !important;   /* Keeps them side-by-side without shrinking */
+        min-width: 85% !important;
+        scroll-snap-align: center;   /* Snaps to middle when swiping */
+        margin: 0 !important;
+        display: block !important;    /* Ensures they don't inherit 'none' from elsewhere */
+        transition: transform 0.2s ease;
+        padding-bottom: 0 !important;
+    }
+
+    /* Ensure the image inside is visible and fills the card */
+    .mini-slider-card img {
+        display: block !important;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slider-container {
+        height: 250px !important;
+    }
+
+    .slider-container img {
+        display: block !important; /* Force injected images to show */
+    }
+
+    /* Hide the old manual buttons */
+    .prev, .next {
+        display: none !important;
+    }
+}

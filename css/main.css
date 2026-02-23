@@ -1,0 +1,59 @@
+:root {
+    --primary: #2563eb;
+    --dark: #1e293b;
+    --gray: #64748b;
+}
+
+.main-content {
+    margin-top: 20px; /* Adds a bit of extra breathing room globally */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #f8fafc; }
+
+.btn-quote {
+    background: var(--primary);
+    color: white !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+}
+
+/* Page Switching Logic */
+.page {
+    display: none; /* Hide all pages by default */
+    padding: 4rem 10%;
+    animation: fadeIn 0.5s ease;
+}
+
+.logo-text-sans {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #004581; /* Brand Navy */
+
+    /* THE FIX: Changed from uppercase to capitalize */
+    text-transform: capitalize;
+
+    /* Adjusted for the specific "Dream Home" look */
+    letter-spacing: -0.5px;
+    word-spacing: 2px;
+}
+
+.dream-home-script {
+    font-family: "Great Vibes", cursive;
+    font-size: 3rem;          /* adjust as needed */
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #2c2c2c;           /* elegant charcoal */
+    line-height: 1.1;
+}
+
+
+/* Show the targeted page or Home by default */
+#home, .page:target { display: block; }
+.page:target ~ #home { display: none; } /* Hide home if another is active */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

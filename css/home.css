@@ -1,0 +1,121 @@
+#home .hero {
+    background: #007bff;
+    color: white;
+    padding: 100px 40px;
+    text-align: center;
+    border-radius: 12px;
+}
+#home h1 { font-size: 3rem; margin-bottom: 20px; }
+
+/* Hero Slider Section */
+#home.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Takes 90% of viewport height */
+}
+
+.slider-wrapper {
+    display: flex; /* Arranges slides in a row */
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out; /* Smooth transition for slides */
+}
+
+.project-slide {
+    flex: 0 0 100%; /* Each slide takes full width */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    object-position: center;
+    filter: brightness(0.7); /* Darkens image slightly for text readability */
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    max-width: 800px;
+}
+
+.overlay-content h1 {
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.overlay-content p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+/* Call to Action Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--brand-navy);
+    color: white;
+    border: 2px solid var(--brand-navy);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-blue-light);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+}
+
+/* Slider Navigation Dots */
+.slider-nav-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 3;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active, .dot:hover {
+    background-color: white;
+    transform: scale(1.2);
+}

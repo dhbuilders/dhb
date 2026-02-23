@@ -1,0 +1,62 @@
+/* Update your card images to be more residential */
+#services .card img {
+    width: 100%;
+    height: 200px; /* Uniform height for a clean grid */
+    object-fit: cover; /* Ensures photos fill the space without stretching */
+    border-radius: 8px; /* Softer edges feel more "homey" */
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Optional: Add a subtle gold hover effect to images */
+#services .card:hover img {
+    outline: 2px solid var(--brand-gold); /* */
+    outline-offset: 5px;
+    transition: all 0.3s ease;
+}
+
+.service-grid {
+    display: grid;
+    /* Forces at least 320px width per card, otherwise wraps to new row */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-top: 5px solid var(--brand-navy); /* From your logo */
+
+    /* Flexbox ensures content is spaced evenly */
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Align text left for better readability of long paragraphs */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-top-color: var(--brand-gold); /* Changes to Gold on hover */
+}
+
+.card h3 {
+    color: var(--brand-navy);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif; /* Your chosen font */
+}
+
+.card p {
+    color: #4a4a4a;
+    line-height: 1.8; /* Increases line spacing for readability */
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
