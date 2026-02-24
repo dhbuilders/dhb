@@ -724,6 +724,6 @@ html {
         margin: 0 !important;
     }
 
-    img.main-logo { height: 45px !important; width: auto !important; margin-right: 10px !important; }
+    img.main-logo { height: 45px !important; width: auto !important; margin-right:0 !important; margin-left: 50px !important;}
     .dream-home-script { font-size: 1.5rem !important; white-space: nowrap; margin: 0 !important; font-weight: bold;}
 }

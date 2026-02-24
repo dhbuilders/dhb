@@ -172,7 +172,7 @@
     }
 
     .slider-container {
-        height: 250px !important;
+        height: 100%;
     }
 
     .slider-container img {
