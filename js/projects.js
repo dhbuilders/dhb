@@ -1,5 +1,6 @@
 // 1. Data Inventory
 const projectInventory = {
+    elevation: ['elevation-1.avif','elevation-2.avif','elevation-3.avif','elevation-4.avif','elevation-5.avif','elevation-6.avif','elevation-7.avif','elevation-8.avif','elevation-9.avif'],
     kitchen: ['kitchen-1.jpg', 'kitchen-2.jpg', 'kitchen-3.jpg', 'kitchen-4.jpg', 'kitchen-5.jpg', 'kitchen-6.jpg', 'kitchen-7.jpg', 'kitchen-8.jpg', 'kitchen-9.jpg', 'kitchen-10.jpg', 'kitchen-11.jpg', 'kitchen-12.jpg', 'kitchen-13.jpg', 'kitchen-14.jpg'],
     bedroom: ['bedroom-1.jpeg', 'bedroom-2.jpeg', 'bedroom-3.jpeg', 'bedroom-4.jpeg', 'bedroom-5.jpeg', 'bedroom-6.jpeg'],
     bathroom: ['bath-1.JPG','bath-2.JPG','bath-3.JPG','bath-4.jpg','bath-5.jpg','bath-6.jpg','bath-7.jpg'],
