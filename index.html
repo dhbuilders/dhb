@@ -239,11 +239,12 @@
                                     <p>We value your time. If you prefer, send us details of your project so we can be better prepared for a productive conversation.</p>
                                 </div>
                                 <div class="contact-form-container">
-                                    <form id="contact-form">
-                                        <input type="text" placeholder="Full Name" required>
-                                        <input type="email" placeholder="Email Address" required>
-                                        <textarea placeholder="Tell us about your project..." rows="5" required></textarea>
-                                        <button type="submit" class="btn-submit">Send Message</button>
+                                    <form id="contact-form" action="https://formspree.io/f/xykpgpzk" method="POST">
+                                        <input type="text" name="fullname" placeholder="Full Name" required>
+                                        <input type="email" name="email" placeholder="Email Address" required>
+                                        <textarea name="project_details" placeholder="Tell us about your project..." rows="5" required></textarea>
+                                        <button id="form-button" type="submit" class="btn-submit">Send Message</button>
+                                        <div id="form-status" style="display: none; padding: 15px; margin-top: 15px; border-radius: 5px; font-weight: 600;"></div>
                                     </form>
                                 </div>
                             </div>
@@ -264,16 +265,18 @@
                             </div>
                             <div class="contact-right">
                                 <div class="contact-form-container">
-                                    <form id="virtual-form">
-                                        <input type="text" placeholder="Full Name" required>
-                                        <select required>
+                                    <form id="contact-form-virtual" action="https://formspree.io/f/mqeyarzv" method="POST">
+                                        <input name="fullname" type="text" placeholder="Full Name" required>
+                                        <input type="email" name="email" placeholder="Email Address" required>
+                                        <select name="meeting_mode" required>
                                             <option value="" disabled selected>Preferred Platform</option>
                                             <option value="zoom">Zoom</option>
                                             <option value="google-meet">Google Meet</option>
                                             <option value="phone">Phone Call</option>
                                         </select>
-                                        <textarea placeholder="Proposed date and time..." rows="5" required></textarea>
-                                        <button type="submit" class="btn-submit">Schedule Call</button>
+                                        <textarea name="schedule" placeholder="Proposed date and time..." rows="5" required></textarea>
+                                        <button id="form-button-virtual" type="submit" class="btn-submit">Schedule Call</button>
+                                        <div id="form-status-virtual" style="display: none; padding: 15px; margin-top: 15px; border-radius: 5px; font-weight: 600;"></div>
                                     </form>
                                 </div>
                             </div>

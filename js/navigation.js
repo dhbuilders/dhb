@@ -3,6 +3,10 @@ const formStatus = document.getElementById("form-status");
 const formButton = document.getElementById("form-button");
 const backToTopBtn = document.getElementById("backToTop");
 
+const contactFormVirtual = document.getElementById("contact-form-virtual");
+const formStatusVirtual = document.getElementById("form-status-virtual");
+const formButtonVirtual = document.getElementById("form-button-virtual");
+
 /* --- Mobile Menu Logic --- */
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -44,6 +48,46 @@ if (contactForm) {
             formStatus.style.display = "block";
             formStatus.innerText = "Connection error. Please check your internet.";
             formButton.disabled = false;
+        });
+    });
+}
+
+if (contactFormVirtual) {
+    contactFormVirtual.addEventListener("submit", async function(event) {
+        event.preventDefault(); // Stop the page from redirecting
+
+        // 1. Brief pause to show the user the "Loading" state
+        formButtonVirtual.disabled = true;
+        formButtonVirtual.innerText = "Sending...";
+
+        const data = new FormData(event.target);
+
+        // 2. Send the data to Formspree
+        fetch(event.target.action, {
+            method: contactFormVirtual.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            // 3. Another brief pause before showing result to feel like "processing"
+            setTimeout(() => {
+                if (response.ok) {
+                    formStatusVirtual.style.display = "block";
+                    formStatusVirtual.innerText = "Thanks! Your message has been sent successfully.";
+                    formStatusVirtual.style.color = "#28a745"; // Success Green
+                    contactFormVirtual.reset(); // Clear the form
+                    formButtonVirtual.innerText = "Sent!";
+                } else {
+                    formStatusVirtual.style.display = "block";
+                    formStatusVirtual.innerText = "Oops! There was a problem. Please try again.";
+                    formStatusVirtual.style.color = "#dc3545"; // Error Red
+                    formButtonVirtual.disabled = false;
+                    formButtonVirtual.innerText = "Send Message";
+                }
+            }, 800); // 800ms "Processing" pause
+        }).catch(error => {
+            formStatusVirtual.style.display = "block";
+            formStatusVirtual.innerText = "Connection error. Please check your internet.";
+            formButtonVirtual.disabled = false;
         });
     });
 }
