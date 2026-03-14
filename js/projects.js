@@ -85,5 +85,5 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtn.addEventListener('click', closeLightbox);
 
     // Initial Load
-    renderCategory('kitchen');
+    renderCategory('elevation');
 });
