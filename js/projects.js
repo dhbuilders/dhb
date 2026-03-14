@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
 
-    let currentCategory = 'kitchen';
+    let currentCategory = 'elevation';
     let currentIndex = 0;
 
     function renderCategory(category) {
