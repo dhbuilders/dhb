@@ -1,84 +1,79 @@
-# 🏗️ Dream Home Builders NJ - Developer Guide
+# 🏗️ Dream Home Builders NJ - Full Developer Guide
 
-This repository contains the source code for the Dream Home Builders NJ website, hosted on **Netlify** and registered via **CloudMySite**.
-
----
+This repository contains the source code for the Dream Home Builders NJ website, a high-performance static site hosted on **Netlify**.
 
 ## 🚀 Quick Links
 * **Live Site:** [https://dreamhomebuildersnj.com](https://dreamhomebuildersnj.com)
 * **Hosting Dashboard:** [Netlify Admin](https://app.netlify.app/)
-* **Domain Management:** [CloudMySite Login](https://cloudmysite.com)
+* **Form Submissions:** [Formspree Dashboard](https://formspree.io/forms)
 
 ---
 
-## 🛠️ Project Structure
-- `/images/projects/`: Contains sub-folders for each project (e.g., `/bathroom`, `/kitchen`).
-- `js/projects.js`: The "database" that tells the website which images to display.
-- `scripts/`: Contains automation shell scripts for file management.
+## 📂 File Architecture & Logic
+
+| File | Responsibility |
+| :--- | :--- |
+| `index.html` | The core structure. Includes Hero, Services, Gallery, Testimonials, and Forms. |
+| `js/projects.js` | Manages the "Get Inspired" gallery, tab switching, and lightbox. |
+| `js/navigation.js` | Handles mobile menu, "Back to Top" button, and Formspree AJAX submissions. |
+| `js/contact.js` | Controls the tab switching between "In Person" and "Virtual" contact modes. |
+| `js/slider.js` | Powers the automatic 5-second fade/slide effect on the main Hero section. |
+| `js/mini-slider.js` | Utility script for manual image navigation within project cards. |
 
 ---
 
-## 📸 How to Update Project Images
+## 📝 Form Management (Formspree)
+The site uses three distinct Formspree endpoints. To change the recipient email, update the IDs in the `action` attribute of the `<form>` tags in `index.html`.
 
-To add a new project or update existing photos, follow these steps:
+1.  **Contact Us (In-Person):** `https://formspree.io/f/xykpgpzk`
+2.  **Contact Us (Virtual):** `https://formspree.io/f/mqeyarzv`
+3.  **Request a Quote:** `https://formspree.io/f/mjgowdwe`
 
-### 1. Organize Folders
-Add your new images into a sub-folder under `images/projects/`.
-*Example: `images/projects/basement/`*
-
-### 2. Batch Rename Images
-Use the provided shell script to ensure images are named consistently and sorted correctly.
-1. Open the WebStorm Terminal (`Alt + F12`).
-2. Run: `./scripts/rename_projects.sh`
-3. Follow the prompts to provide a **prefix** (e.g., `basement`) and a **starting index** (e.g., `1`).
-    * *This results in: `basement-1.jpg`, `basement-2.jpg`, etc.*
-
-### 3. Generate the Image List
-Run the lister script to get the code for your Javascript file:
-1. Run: `./scripts/list_projects.sh`
-2. Enter the prefix when prompted (e.g., `basement`).
-3. **Copy** the comma-separated output (e.g., `'basement-1.jpg','basement-2.jpg'`).
-
-### 4. Update `projects.js`
-1. Open `js/projects.js` in WebStorm.
-2. Paste the copied list into the corresponding project array.
-3. Save the file (`Cmd + S`).
+*Note: `navigation.js` handles the "Sending..." states and success/error messages to prevent page reloads.*
 
 ---
 
-## 📤 Deploying Changes
-This site uses **Continuous Deployment** via GitHub.
+## 📸 Updating the "Get Inspired" Gallery
+This section relies on the `projectInventory` object in `js/projects.js`.
 
-1. **Commit your changes:** - Open the Commit tab in WebStorm (`Cmd + 0`).
-    - Select your changed files (images and `projects.js`).
-    - Write a message (e.g., "Add new basement project").
-    - Click **Commit**.
-2. **Push to GitHub:**
-    - Press `Cmd + Shift + K`.
-    - Click **Push**.
-    - *Note: If prompted for credentials, use your GitHub Username and your Personal Access Token (not your password).*
+### 1. File Preparation
+* Add images to the specific category folder: `images/projects/[category]/`.
+* **Available Categories:** `elevation`, `kitchen`, `bedroom`, `bathroom`, `living`, `wetbar`, `interior`.
 
-**Netlify will automatically detect the push and update the live site within 1-2 minutes.**
+### 2. Rename & Sort
+Use the WebStorm Terminal (`Alt + F12`) to run the utility scripts:
+1.  **Rename:** `./scripts/rename_projects.sh` (Batch renames with hyphens and increments).
+2.  **List:** `./scripts/list_projects.sh` (Generates the formatted `'file-1.jpg','file-2.jpg'` list).
+
+### 3. Update the Inventory
+Paste the output from the lister script into the corresponding array in `js/projects.js`. The gallery and lightbox will update automatically.
 
 ---
 
-## ⚙️ Maintenance & Troubleshooting
+## 🛠️ Modifying Content Sections
 
-### DNS & SSL
-- **Nameservers:** The domain is pointed to Netlify using:
-    - `dns1.p01.nsone.net`
-    - `dns2.p01.nsone.net`
-    - `dns3.p01.nsone.net`
-    - `dns4.p01.nsone.net`
-- **SSL:** Managed automatically by Netlify (Let's Encrypt).
+### Updating Services
+Edit the `.card` divs in `index.html`. Each card contains an image from `images/services/` and a descriptive paragraph.
 
-### Git & .DS_Store
-If you see `.DS_Store` files appearing in your Git changes:
-1. Run `git rm --cached -r .DS_Store` in the terminal.
-2. Commit the change. These files are ignored by the `.gitignore` file.
+### Managing Testimonials
+Testimonials are hard-coded in the grid in `index.html`. Copy an existing `.testimonial-card` div to add new client feedback.
 
-### Expired GitHub Token
-If Git rejects your login:
-1. Delete the "github.com" entry in **Mac Keychain Access**.
-2. Generate a new "Fine-grained Token" on GitHub.
-3. Paste the new token when WebStorm prompts for a password.
+### Changing the Hero Slider
+To update the main rotating images:
+1.  Add new images to `images/home/`.
+2.  Update the `src` paths in the `.project-slide` divs within `index.html`.
+
+---
+
+## 📤 Git & Deployment Workflow
+1.  **Clear Cache:** Run `git rm --cached -r .DS_Store` to remove Mac system files from the repo.
+2.  **Commit:** `Cmd + K` in WebStorm.
+3.  **Push:** `Cmd + Shift + K`.
+    * *Use your GitHub Personal Access Token if prompted for a password.*
+4.  **Verify:** Check Netlify; the site updates automatically upon a successful GitHub push.
+
+---
+
+## ⚙️ Maintenance Notes
+* **Adding New Tabs:** If a new category is added, you must create a `<button>` with a matching `data-category` in `index.html` and a matching key in `js/projects.js`.
+*
