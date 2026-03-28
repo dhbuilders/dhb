@@ -50,6 +50,20 @@ Paste the output from the lister script into the corresponding array in `js/proj
 
 ---
 
+## 🧱 Adding or Removing Sections
+
+### To Add a New Section:
+1.  **HTML Structure:** In `index.html`, create a new `<section>` tag with a unique `id` (e.g., `<section id="awards" class="page">`).
+2.  **Navigation Link:** Add a matching link to the `<nav>` list in the header: `<li><a href="#awards">Awards</a></li>`.
+3.  **Styling:** Create a new CSS file in `/css/` or add styles to `layout.css` using the section ID as a selector.
+
+### To Remove a Section:
+1.  **Delete HTML:** Remove the entire `<section>` block from `index.html`.
+2.  **Remove Link:** Delete the corresponding `<li>` from the `<nav>` section in the header.
+3.  **Clean Up:** (Optional) Remove the associated CSS file link from the `<head>` of `index.html`.
+
+---
+
 ## 🛠️ Modifying Content Sections
 
 ### Updating Services
@@ -58,22 +72,10 @@ Edit the `.card` divs in `index.html`. Each card contains an image from `images/
 ### Managing Testimonials
 Testimonials are hard-coded in the grid in `index.html`. Copy an existing `.testimonial-card` div to add new client feedback.
 
-### Changing the Hero Slider
-To update the main rotating images:
-1.  Add new images to `images/home/`.
-2.  Update the `src` paths in the `.project-slide` divs within `index.html`.
-
 ---
 
 ## 📤 Git & Deployment Workflow
 1.  **Clear Cache:** Run `git rm --cached -r .DS_Store` to remove Mac system files from the repo.
 2.  **Commit:** `Cmd + K` in WebStorm.
 3.  **Push:** `Cmd + Shift + K`.
-    * *Use your GitHub Personal Access Token if prompted for a password.*
 4.  **Verify:** Check Netlify; the site updates automatically upon a successful GitHub push.
-
----
-
-## ⚙️ Maintenance Notes
-* **Adding New Tabs:** If a new category is added, you must create a `<button>` with a matching `data-category` in `index.html` and a matching key in `js/projects.js`.
-*
